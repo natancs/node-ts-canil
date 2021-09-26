@@ -11,7 +11,7 @@ const app = express()
 
 // Configuração do motor de vizualização
 app.set('view engine', 'mustache')
-app.set('view', path.join(__dirname, 'views'))
+app.set('views', path.join(__dirname, 'views'))
 app.engine('mustache', mustach()) 
 
 
@@ -23,7 +23,7 @@ app.use(router)
 
 // Rota para quando não for encontrada nenhuma rota
 app.use((request, response) => {
-  response.send('Página não encontrada')
+  response.render('pages/404')
 })
 
 app.listen(process.env.PORT, () => {
